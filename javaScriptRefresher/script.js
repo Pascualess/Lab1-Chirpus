@@ -10,6 +10,8 @@ console.log(population);
 
 population = population * 3;
 
+population *= 3;
+
 console.log(population);
 
 let javaScriptIsCool = true;
