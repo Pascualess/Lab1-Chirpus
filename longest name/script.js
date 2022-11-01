@@ -1,4 +1,4 @@
-let name1 = "Chuckaa";
+let name1 = "Chuckaaa";
 let name2 = "Jakeaaa";
 let name3 = "Heckler";
 

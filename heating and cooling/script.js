@@ -11,7 +11,7 @@ if (actualTemp < desiredTemp) {
 let tempCelsius = 18.3;
 let targetUnit = "F";
 
-switch (targetUnit.toUpperCase()) {
+switch (targetUnit) {
   case "K":
     tempCelsius = tempCelsius + 273.15;
     break;
