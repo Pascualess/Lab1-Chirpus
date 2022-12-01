@@ -1,0 +1,16 @@
+{
+  "name": "piglatin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.3.1",
+    "process": "^0.11.10",
+    "promptly": "^3.2.0"
+  }
+}
