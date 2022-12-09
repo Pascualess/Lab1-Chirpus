@@ -37,3 +37,23 @@ test(`"shrimp" would return "impshray"`, () => {
   let test = main.pigLatinTranslator(`shrimp`);
   expect(test).toBe(`impshray`);
 });
+test(`"a" would return "away"`, () => {
+    let test = main.pigLatinTranslator(`a`);
+    expect(test).toBe(`away`);
+});
+test(`"e" would return "eway"`, () => {
+    let test = main.pigLatinTranslator(`e`);
+    expect(test).toBe(`eway`);
+});
+test(`"i" would return "iway"`, () => {
+    let test = main.pigLatinTranslator(`i`);
+    expect(test).toBe(`iway`);
+});
+test(`"o" would return "oway"`, () => {
+    let test = main.pigLatinTranslator(`o`);
+    expect(test).toBe(`oway`);
+});
+test(`"u" would return "uway"`, () => {
+    let test = main.pigLatinTranslator(`u`);
+    expect(test).toBe(`uway`);
+});

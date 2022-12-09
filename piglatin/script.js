@@ -1,5 +1,6 @@
 function pigLatinTranslator(words) {
-  let wordsArray = words.split(` `);
+  console.log(typeof(words));
+  const wordsArray = words.split(` `);
   //   console.log(wordsArray);
   for (let word of wordsArray) {
     let wordIndex = wordsArray.indexOf(word);
@@ -11,17 +12,17 @@ function pigLatinTranslator(words) {
       wordsArray[wordIndex] =
         word.slice(firstPosition) + word.slice(0, firstPosition) + `ay`;
       if (casing) {
-        upperCaseFirstLetter(wordsArray,wordIndex)
+        upperCaseFirstLetter(wordsArray, wordIndex);
       }
     } else if (firstPosition === 0) {
       wordsArray[wordIndex] = word + `way`;
       if (casing) {
-        upperCaseFirstLetter(wordsArray,wordIndex)
+        upperCaseFirstLetter(wordsArray, wordIndex);
       }
     } else {
       wordsArray[wordIndex] += `ay`;
       if (casing) {
-        upperCaseFirstLetter(wordsArray,wordIndex)
+        upperCaseFirstLetter(wordsArray, wordIndex);
       }
     }
   }
@@ -30,9 +31,8 @@ function pigLatinTranslator(words) {
   cleanWords = sentence
     .replace(/[.',\/#!$%\^&\*;:{}=\-_`~()]/g, "")
     .replace(/\s{2,}/g, " ");
-    console.log(cleanWords)
+  console.log(cleanWords);
   return cleanWords;
-  
 }
 
 function checkCase(word) {
@@ -46,10 +46,9 @@ function checkCase(word) {
   }
 }
 
-function upperCaseFirstLetter(wordsArray,wordIndex){
-    wordsArray[wordIndex] =
-          wordsArray[wordIndex][0].toUpperCase() +
-          wordsArray[wordIndex].slice(1);
+function upperCaseFirstLetter(wordsArray, wordIndex) {
+  wordsArray[wordIndex] =
+    wordsArray[wordIndex][0].toUpperCase() + wordsArray[wordIndex].slice(1);
 }
+pigLatinTranslator(`hello`)
 module.exports = { pigLatinTranslator };
-

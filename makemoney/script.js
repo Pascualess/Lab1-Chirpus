@@ -21,53 +21,47 @@ function makeMoney(event) {
   // check what moneyType if or switch statment
   console.log(moneyType.value);
   console.log(number);
-  switch (moneyType.value) {
-    case `q`:
-      for (let i = 1; i <= number; i++) {
-        let image = document.createElement(`img`);
+
+  for (let i = 1; i <= number; i++) {
+    let image = document.createElement(`img`);
+    switch (moneyType.value) {
+      case `q`:
         image.src = `./quarter.jpg`;
         image.style.width = "156px";
         image.style.height = "auto";
         coinHolder.appendChild(image);
         console.log(`hi ${i}`);
-      }
-      break;
 
-    case `d`:
-      for (let i = 1; i <= number; i++) {
-        let image = document.createElement(`img`);
+        break;
+
+      case `d`:
         image.src = `./dime.jpg`;
         image.style.width = "115px";
         image.style.height = "auto";
         coinHolder.appendChild(image);
         console.log(`hi ${i}`);
-      }
-      break;
 
-    case `p`:
-      for (let i = 1; i <= number; i++) {
-        let image = document.createElement(`img`);
+        break;
+
+      case `p`:
         image.src = `./penny.jpg`;
         image.style.width = "122px";
         image.style.height = "auto";
         coinHolder.appendChild(image);
         console.log(`hi ${i}`);
-      }
-      break;
 
-    case `n`:
-      for (let i = 1; i <= number; i++) {
-        let image = document.createElement(`img`);
+        break;
+
+      case `n`:
         image.src = `./nickle.jpg`;
         image.style.width = "135px";
         image.style.height = "auto";
         coinHolder.appendChild(image);
         console.log(`hi ${i}`);
-      }
-      break;
 
-    //make that coin howMany times
+        break;
+
+      //make that coin howMany times
+    }
   }
 }
-
-
