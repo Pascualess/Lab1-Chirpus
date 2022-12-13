@@ -17,5 +17,5 @@ function calcInventoryValue(array: InventoryItem[]): number {
   }
   return result;
 }
-
+export {calcInventoryValue}
 console.log(calcInventoryValue(inventory));
