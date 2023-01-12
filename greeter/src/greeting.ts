@@ -10,5 +10,8 @@ class Greeter{
     }
 }
 let test = new Greeter(`Hello`)
+test.greet(`Jake`)
+console.log(test.greet(`Jake`))
 export { Greeter}
 
+              
