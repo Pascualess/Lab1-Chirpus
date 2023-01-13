@@ -72,7 +72,7 @@ itemRouter.delete(
     if (itemFound !== undefined) {
       let index = itemArray.indexOf(itemFound);
       itemArray.splice(index, 1);
-      return res.status(200).json({ message: "Item removed successfully." });
+      return res.status(204).json({ message: "Item removed successfully." });
     } else {
       return res.status(404).json({ message: "Item not found." });
     }
