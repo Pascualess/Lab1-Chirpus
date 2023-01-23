@@ -1,0 +1,31 @@
+.AdDiv {
+  display: flex;
+  flex-direction: column;
+}
+.adContainer {
+  padding: 10px;
+}
+.button-bar {
+  display: inline-block;
+}
+button:active {
+  background-color: #1e60a9;
+}
+button:disabled {
+  background-color: gray;
+}
+h2 {
+  text-align: left;
+}
+input {
+  display: inline-block;
+}
+button {
+  width: auto;
+  margin: 5px;
+  color: white;
+  background-color: #0e3c7e;
+  border-radius: 3px;
+  border-color: #0e3c7e;
+  border-style:hidden;
+}

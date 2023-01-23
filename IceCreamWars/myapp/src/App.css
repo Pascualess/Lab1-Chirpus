@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@media screen and (min-width: 580px){
+  .compoContainer {
+    display: flex;
+    justify-content: space-evenly;
+    
+  }
+}
+.AdDesigner {
+    padding: 50px;
+}
+.Votes{
+    padding: 50px;
+}

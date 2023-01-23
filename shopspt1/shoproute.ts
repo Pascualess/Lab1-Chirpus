@@ -1,5 +1,7 @@
 import express, { Router, Request, Response } from "express";
 import { Shop } from "./shop";
+import { body, validationResult } from "express-validator";
+import { appendFile } from "fs";
 
 const shops: Shop[] = [
   { id: 1, name: "Pepper's Pizza", rating: 4.5 },
@@ -11,12 +13,17 @@ const shops: Shop[] = [
 
 export const shopRouter = Router();
 
+shopRouter.post("/");
+
 shopRouter.get("/", async (req: Request, res: Response): Promise<Response> => {
-    if(req.query.minRating !== undefined){
-        let minRatingArray = shops.filter((x) => x.rating <= Number(req.query.minRating))
-        return res.status(200).json(minRatingArray)
-    }
-  else {return res.status(200).json(shops)};
+  if (req.query.minRating !== undefined) {
+    let minRatingArray = shops.filter(
+      (x) => x.rating >= Number(req.query.minRating)
+    );
+    return res.status(200).json(minRatingArray);
+  } else {
+    return res.status(200).json(shops);
+  }
 });
 
 shopRouter.get(
@@ -31,38 +38,59 @@ shopRouter.get(
   }
 );
 
-shopRouter.post("/", async (req: Request, res: Response): Promise<Response> => {
- let newShop:Shop = {
-    id: GetNextId(),
-    name: req.body.name,
-    rating: req.body.rating
- }
- shops.push(newShop)
- return res.status(201).json(newShop)
-})
-
-shopRouter.put("/:id",async (req: Request, res: Response): Promise<Response> => {
-    let shopFound = shops.find((x) => x.id === Number(req.params.id))
-    if(shopFound !== undefined) {
-        shopFound.name = String(req.body.name),
-        shopFound.rating = Number(req.body.rating)
-        return res.status(200).json(shopFound)
-    }else {
-        return res.status(404).send(`ID could not be found.`);
-      }
-})
-
-shopRouter.delete("/:id",async (req: Request, res: Response): Promise<Response> => {
-    let shopFound = shops.find((x) => x.id === Number(req.params.id))
-    if (shopFound !== undefined) {
-        let index = shops.indexOf(shopFound)
-        shops.splice(index, 1)
-        return res.status(204).send(`Deleted`);
-    } else {
-        return res.status(404).send(`ID could not be found.`)
+shopRouter.post(
+  "/",
+  body("name").isLength({ min: 3 }),
+  body("rating").isFloat({min: 0, max:5 }),
+  async (req: Request, res: Response): Promise<Response> => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
     }
-})
+    let newShop: Shop = {
+      id: GetNextId(),
+      name: req.body.name,
+      rating: req.body.rating,
+    };
+    shops.push(newShop);
+    return res.status(201).json(newShop);
+  }
+);
+
+shopRouter.put(
+  "/:id",
+  body("name").isLength({ min: 3 }),
+  body("rating").isFloat({min: 0, max:5 }),
+  async (req: Request, res: Response): Promise<Response> => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    let shopFound = shops.find((x) => x.id === Number(req.params.id));
+    if (shopFound !== undefined) {
+      (shopFound.name = String(req.body.name)),
+        (shopFound.rating = Number(req.body.rating));
+      return res.status(200).json(shopFound);
+    } else {
+      return res.status(404).send(`ID could not be found.`);
+    }
+  }
+);
+
+shopRouter.delete(
+  "/:id",
+  async (req: Request, res: Response): Promise<Response> => {
+    let shopFound = shops.find((x) => x.id === Number(req.params.id));
+    if (shopFound !== undefined) {
+      let index = shops.indexOf(shopFound);
+      shops.splice(index, 1);
+      return res.status(204).send(`Deleted`);
+    } else {
+      return res.status(404).send(`ID could not be found.`);
+    }
+  }
+);
 
 function GetNextId() {
-    return Math.max(...shops.map((x) => x.id)) + 1;
-  }
+  return Math.max(...shops.map((x) => x.id)) + 1;
+}

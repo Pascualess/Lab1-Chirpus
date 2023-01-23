@@ -1,0 +1,29 @@
+.Votes {
+    padding: 10px;
+}
+::-webkit-progress-bar {
+    background-color: white;
+  }
+.Votes p {
+    margin-top: 8px ;
+    margin-bottom: 2px;
+}
+
+.progressChocolate {
+    background-color: white;
+}
+.progressChocolate::-webkit-progress-value {
+    background-color: #4f2c2c;
+}
+.progressVanilla {
+    background-color: white;
+}
+.progressVanilla::-webkit-progress-value {
+    background-color: #cbc0ac;
+}
+.progressStrawberry {
+    background-color: black;
+}
+.progressStrawberry::-webkit-progress-value {
+    background-color: #de8c91;
+}
