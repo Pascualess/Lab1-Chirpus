@@ -1,8 +1,10 @@
 import "../css/Header.css"
 
-function DisplayingHeader() {
+
+function DisplayingHeader(props: {user: string}) {
   return (
-    <div>
+    <div className="DisplayingHeader">
+      <p>Welcome {props.user}</p>
       <header className="theHeader">Ice Cream Wars</header>
     </div>
   );
